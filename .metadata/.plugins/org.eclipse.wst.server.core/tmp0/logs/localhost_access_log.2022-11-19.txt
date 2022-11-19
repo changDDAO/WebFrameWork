@@ -1,0 +1,10 @@
+127.0.0.1 - - [19/Nov/2022:00:37:48 +0900] "GET / HTTP/1.1" 404 808
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:02 +0900] "GET / HTTP/1.1" 404 808
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:11 +0900] "GET /electronic HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:11 +0900] "GET /electronic/ HTTP/1.1" 404 823
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:39 +0900] "GET /electronic/product HTTP/1.1" 200 1284
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:39 +0900] "GET /electronic/washmachine.jpg HTTP/1.1" 200 12505
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:39 +0900] "GET /electronic/refrigerator.jpg HTTP/1.1" 200 16141
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:46 +0900] "GET /electronic/product/detail.do?id=4 HTTP/1.1" 200 556
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:46 +0900] "GET /electronic/fanlogo.jpg HTTP/1.1" 200 4156
+0:0:0:0:0:0:0:1 - - [19/Nov/2022:00:38:46 +0900] "GET /electronic/microwavelogo.jpg HTTP/1.1" 200 5018

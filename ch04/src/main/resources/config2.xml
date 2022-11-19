@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="tv" class="di.ex02.SamsungTV">
+		<constructor-arg ref="sony"/>
+		<constructor-arg value="75인치 QLED"/>
+	</bean>
+	
+	<bean id="tv2" class="di.ex02.LgTV">
+		<property name="speaker" ref="apple" />
+		<property name="model" value="75인치 OLED" />
+	</bean>
+	
+	<bean id="sony" class="di.ex02.SonySpeaker"/>
+	
+	<bean id="apple" class="di.ex02.AppleSpeaker"/>
+</beans>

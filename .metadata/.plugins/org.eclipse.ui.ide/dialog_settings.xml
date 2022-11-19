@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\younc\eclipse-workspace\SpringMVC"/>
+			<item value="C:\Users\younc\eclipse-workspace\chap4"/>
+			<item value="C:\Users\younc\eclipse-workspace\chap5"/>
+			<item value="C:\Users\younc\eclipse-workspace\c4"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import"/>
+			<item value=""/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="C:\Users\younc\OneDrive\바탕 화면\컴공\웹 프레임워크\chap5.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\electronic.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\chap4.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\ch04.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\SpringMVC.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\Ch01_Servlet.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\practice.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\chap5.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\c4.zip"/>
+			<item value="C:\Users\younc\OneDrive\바탕 화면\import\chap3.zip"/>
+		</list>
+	</section>
+</section>
