@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yu.mybatis.mapper.CommentMapper">
+	<select id="selectCommentByPrimaryKey" parameterType="int" resultType="CommentVO">
+		select comment_no as commentNo, user_id as userId, comment_content as commentContent, reg_date as regDate
+		from comment
+		where comment_no = #{commentNo}
+	</select>
+	
+	<select id="selectSomeComments" parameterType="int" resultType="CommentVO">
+		select comment_no as commentNo, user_id as userId, comment_content as commentContent, reg_date as regDate
+		from comment
+		where comment_no >= #{commentNo}
+	</select>
+	
+	<select id="selectManyParameters1" parameterType="hashmap" resultType="CommentVO">
+		select comment_no as commentNo, user_id as userId, comment_content as commentContent, reg_date as regDate
+		from comment
+		where comment_no >= #{commentNo} and user_id = #{uid} 
+	</select>
+	
+	<select id="selectManyParameters2" resultType="CommentVO">
+		select comment_no as commentNo, user_id as userId, comment_content as commentContent, reg_date as regDate
+		from comment
+<!-- 		where comment_no >= #{param1} and user_id = #{param2}  -->
+		where comment_no >= #{cno} and user_id = #{uid}
+	</select>
+	
+	<insert id="insertComment" parameterType="CommentVO">
+		insert into comment(comment_no, user_id, comment_content, reg_date)
+		values (#{commentNo}, #{userId}, #{commentContent}, #{regDate})
+	</insert>
+	
+	<update id="updateComment" parameterType="CommentVO">
+		update comment
+		set comment_content = #{commentContent}
+		where comment_no = #{commentNo}
+	</update>
+	
+	<delete id="deleteComment" parameterType="int">
+		delete from comment
+		where comment_no = #{arg1}
+	</delete>
+</mapper>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="ResultMapMapping">
+  <!-- 
+  	<resultMap id="basicCommentMap" type="CommentVO">
+  		<id column="comment_no" jdbcType="INTEGER" property="commentNo" />
+  		<result column="user_id" jdbcType="VARCHAR" property="userId"/>
+  		<result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
+  		<result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
+  	</resultMap>
+   -->	
+   	<resultMap id="basicCommentMap" type="CommentVO">
+  		<id column="comment_no" property="commentNo" />
+  		<result column="user_id" property="userId"/>
+  		<result column="reg_date" property="regDate" />
+  		<result column="comment_content" property="commentContent"/>
+  	</resultMap>
+
+  	<resultMap id="constructorCommentMap" type="CommentVO">
+ 		<constructor>
+			<idArg column="comment_no" javaType="_int" />
+			<arg column="user_id" javaType="string" />
+			<arg column="reg_date" javaType="date" />
+			<arg column="comment_content" javaType="string" />
+  		</constructor>
+  	</resultMap>
+  	
+  	<resultMap id="associationCommentUserMap" type="CommentUser">
+  		<association property="comment" javaType="CommentVO" resultMap="basicCommentMap" />
+  		<association property="user" javaType="UserVO">
+  			<id column="user_id" property="userId" />
+  			<result column="user_name" property="userName"/>
+  		</association>
+  	</resultMap>
+  		
+  	<resultMap id="commentRepliesMap" type="CommentReplies">
+  		<id column="comment_no" property="commentNo" />
+  		<result column="user_id" property="userId"/>
+  		<result column="reg_date" property="regDate" />
+  		<result column="comment_content" property="commentContent"/>
+  		<collection property="replies" ofType="ReplyVO">
+  			<id column="reply_no" property="replyNo" />
+  			<result column="user_id2" property="userId" />
+  			<result column="reply_content" property="replyContent" />
+  			<result column="reg_date2" property="regDate" />
+  		</collection>
+  	</resultMap>
+  	
+  	<select id="selectCommentByPrimaryKeyRM" parameterType="int" resultMap="basicCommentMap">
+  		select * from comment where comment_no = #{commentNo}
+  	</select>
+  	
+  	<select id="selectCommentByPrimaryKeyConstructor" parameterType="int" resultMap="constructorCommentMap">
+  		select * from comment where comment_no = #{commentNo}
+  	</select>
+  	
+  	<select id="selectCommentUser" parameterType="int" resultMap="associationCommentUserMap">
+  		select c.comment_no, c.user_id, c.comment_content, c.reg_date, u.user_name
+  		from comment c, user u
+  		where c.user_id = u.user_id
+  		and c.comment_no = #{commentNo}
+  	</select>
+  	
+  	<select id="selectCommentReplies" parameterType="int" resultMap="commentRepliesMap">
+  		select c.comment_no, c.user_id, c.comment_content, c.reg_date, 
+  				r.reply_no, r.reply_content, r.user_id as user_id2, r.reg_date as reg_date2
+  		from comment c, reply r
+  		where c.comment_no = r.comment_no
+  		and c.comment_no = #{commentNo}
+  	</select>
+  </mapper>

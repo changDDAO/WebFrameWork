@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="tv2" class="yu.ch06.boot02.LgTV">
+		<property name="speaker" ref="apple" />
+		<property name="model" value="75인치 OLED" />
+	</bean>
+	
+	<bean id="apple" class="yu.ch06.boot02.AppleSpeaker"/>
+</beans>
