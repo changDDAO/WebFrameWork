@@ -3,6 +3,7 @@ package ch05.ex04;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,11 +18,26 @@ public class MemberDAO {
 		List<MemberVO> list = template.query(sql, new BeanPropertyRowMapper<MemberVO>(MemberVO.class));
 		return list;
 	}
+	public int updateMember(MemberVO member) {
+		String query = "update member set name=?,password=?,email=?,regdate=? where id =?";
+		return template.update(query, member.getName(), member.getPassword(), 
+				member.getEmail(), member.getRegdate(),member.getId());
+	}
 	
 	public int addMember(MemberVO member) {
 		String query = "insert into member(name, password, email, regdate) values (?, ?, ?, ?)";
 		return template.update(query, member.getName(), member.getPassword(), 
 				member.getEmail(), member.getRegdate());
+	}
+	
+	public MemberVO getMember(String id) {
+
+		String sql = "select * from member where id = ?";
+		
+		MemberVO selectedMember = template.queryForObject(sql,(rs, rowNum)-> new MemberVO(rs.getInt("id"),
+				rs.getString("email"),rs.getString("password"),rs.getString("name"),rs.getString("regdate")),new Object[] {id});
+		//람다식을 사용하면서 MemberVO 객체에 값을 초기화해주는 느낌 lombok @AllArgsConstructor 전체 인자 생성자를 선언했으므로, NoArgsConstructor또한 필요 
+		return selectedMember;
 	}
 	
 	public int deleteMember(String id) {

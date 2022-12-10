@@ -1,20 +1,21 @@
 package ch05.ex04;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 @RequestMapping("/ex04")
 public class MemberController {
 	@Autowired
 	private MemberDAO dao;
-	
+
 	@RequestMapping("/list") 
 	public String memberlistPage(Model model){
 		model.addAttribute("members", dao.listMembers());
@@ -33,22 +34,25 @@ public class MemberController {
 		return "redirect:list";
 	}
 	
-	@RequestMapping("/delete")
-	public String deleteMember(Model model, HttpServletRequest request) {
-		dao.deleteMember(request.getParameter("id"));
+	@RequestMapping("/delete/{id}")
+	public String deleteMember(@PathVariable String id) {
+		System.out.println(id);
+		dao.deleteMember(id);
+		return "redirect:/ex04/list";
+	}
+	
+	
+	@RequestMapping("/update")
+	public String updateData(HttpServletRequest request, MemberVO member) {
+		System.out.println(member);
+		dao.updateMember(member);
 		return "redirect:list";
 	}
 	
-	@Transactional(propagation=Propagation.REQUIRED)
-	@RequestMapping("/test")
-	public String transactionTest(HttpServletRequest request) {
-		dao.deleteMember("5");
-		MemberVO member = new MemberVO();
-		member.setEmail("email");
-		member.setName("name");
-		member.setPassword("password");
-		member.setRegdate("잘못된 날짜 format");
-		dao.addMember(member);
-		return "redirect:list";
+	@RequestMapping("/list/{id}")
+	public String giveDataById(@PathVariable String id, Model model) {
+		MemberVO member=dao.getMember(id);
+		model.addAttribute("member",member);
+		return "ex04/updateForm";
 	}
 }

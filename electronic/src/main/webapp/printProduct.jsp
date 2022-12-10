@@ -25,8 +25,8 @@
 	<p><a href = "/electronic/basketProduct.jsp">[장바구니]</a></p>
 	<p>전하다 imageFiles </p>
 	<img src ="/electronic/refrigerator.jpg" id="refrigerator">
-	
-     <img src ="/electronic/washmachine.jpg"id="washmachine">
+	 <img src ="/electronic/washmachine.jpg"id="washmachine">
+	 <img src ="/electronic/minions.png" id="minion">
 	
 </div>
 

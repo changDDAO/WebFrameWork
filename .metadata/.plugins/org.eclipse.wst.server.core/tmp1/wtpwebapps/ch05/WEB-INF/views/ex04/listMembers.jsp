@@ -15,16 +15,16 @@
 	<hr> 
 	<table border="1">
 		<tr>
-			<th>id</th> <th>이름</th> <th>비밀번호</th> <th>이메일</th> <th>가입일</th> <th>삭제</th>
+			<th>아이디</th> <th>이름</th> <th>비밀번호</th> <th>이메일</th> <th>가입일</th> 
 		</tr>
 		<c:forEach var="member" items="${members}">
 			<tr>
-				<td align="center">${member.id}</td>
+				<td align="center"><a href="list/${member.id}">${member.id}</td>
 				<td>${member.name} </td>
 				<td>${member.password} </td>
 				<td>${member.email} </td>
 				<td>${member.regdate}</td>
-				<td align="center"><a href="delete?id=${member.id}">삭제?</a></td>
+				
 			</tr>
 		</c:forEach>
 	</table>

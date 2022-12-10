@@ -42,7 +42,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut id="ex1Controller" expression="execution(* chap5.ex1.*Controller.*(..))" />
+		<aop:pointcut id="ex1Controller" expression="execution(* chap5.ex2.*Controller.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="ex1Controller"/>
 	</aop:config>
 </beans>
